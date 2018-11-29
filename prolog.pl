@@ -12,3 +12,6 @@ medio(A,M) :- nelementos(A,Y), soma(A,X), M is X/Y.
 
 inserirFim(A, [], [A]).
 inserirFim(A, [X|B], [X|C]) :- inserirFim(A, B, C).
+
+adjacente(A,B,[C,D|[]]) :- A == C, B == D; A == D, B == C.
+adjacente(A,B,[C,D|E]) :- A == C, B == D; A == D, B==C; adjacente(A,B,E). 
