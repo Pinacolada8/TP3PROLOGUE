@@ -22,3 +22,6 @@ adjacente(A,B,[_|T]) :- adjacente(A,B,T).
 
 gerar(B,B,[B]).
 gerar(A,B,[A|X]) :- Y is A+1,gerar(Y,B,X).
+
+reverter([], _).
+reverter([A|B], L) :-  reverter(B,X), inserirFim(A,X,L).
