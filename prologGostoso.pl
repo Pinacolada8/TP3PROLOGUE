@@ -37,3 +37,8 @@ anexar([X|L1], L2, [X|L3]) :- anexar(L1, L2, L3).
 
 remover(_,[],[]).
 remover(X, [A|B], L) :- remover(X,B,R), (   X == A -> anexar([],R,L); anexar([A],R,L)).  
+
+rotacionar([A|B],L):- inserirfim(A,B,L).
+
+rotacionarn(1,A,L) :- rotacionar(A,L).
+rotacionarn(X, A, L) :- rotacionar(A,R), Y is X - 1, rotacionarn(Y,R,L).
