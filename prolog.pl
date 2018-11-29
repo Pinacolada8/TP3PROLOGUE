@@ -13,8 +13,21 @@ medio(A,M) :- nelementos(A,Y), soma(A,X), M is X/Y.
 inserirFim(A, [], [A]).
 inserirFim(A, [X|B], [X|C]) :- inserirFim(A, B, C).
 
+ultimo([X|[]], X).
+ultimo([_|X], S) :- ultimo(X,S).
+
 adjacente(A,B,[C,D|[]]) :- A == C, B == D; A == D, B == C.
 adjacente(A,B,[C,D|E]) :- A == C, B == D; A == D, B==C; adjacente(A,B,E). 
 
 gerar(A,A,[A]).
 gerar(A,B,[A|L]) :- C is A+1, gerar(C,B,L).
+
+reverter([_|[]], _).
+reverter([A|B], C) :- inserirFim(A,B,C), reverter(B,C).
+
+linearizar([A], L).
+
+
+
+concatenar([], L, L).
+concatenar([X|L1], L2, [X|L3]) :- concatenar(L1, L2, L3).
