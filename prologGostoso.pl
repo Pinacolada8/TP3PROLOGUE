@@ -10,8 +10,8 @@ soma([A|B],S) :- soma(B,X), S is A + X.
 
 medio(A,M) :- nelementos(A,Y), soma(A,X), M is X/Y.
 
-inserirFim(A, [], [A]).
-inserirFim(A, [X|B], [X|C]) :- inserirFim(A, B, C).
+inserirfim(A, [], [A]).
+inserirfim(A, [X|B], [X|C]) :- inserirfim(A, B, C).
 
 ultimo([H|[]],H).
 ultimo([_|T],U) :- ultimo(T,U).
@@ -24,4 +24,7 @@ gerar(B,B,[B]).
 gerar(A,B,[A|X]) :- Y is A+1,gerar(Y,B,X).
 
 reverter([], _).
-reverter([A|B], L) :-  reverter(B,X), inserirFim(A,X,L).
+reverter([A|B], L) :-  reverter(B,X), inserirfim(A,X,L).
+
+incrementar([],[]).
+incrementar([H|T], [Y|L]) :- Y is H+1, incrementar(T,L). 
