@@ -29,8 +29,11 @@ reverter([A|B], L) :-  reverter(B,X), inserirfim(A,X,L).
 incrementar([],[]).
 incrementar([H|T], [Y|L]) :- Y is H+1, incrementar(T,L). 
 
-concatenar([], L, L).
-concatenar([X|L1], L2, [X|L3]) :- concatenar(L1, L2, L3).
-
 linearizar([],[]).
-linearizar([A|B],L) :- concatenar(A,X,L), linearizar(B,X).
+linearizar([A|B],L) :- anexar(A,X,L), linearizar(B,X).
+
+anexar([], L, L).
+anexar([X|L1], L2, [X|L3]) :- anexar(L1, L2, L3).
+
+remover(_,[],[]).
+remover(X, [A|B], L) :- remover(X,B,R), (   X == A -> anexar([],R,L); anexar([A],R,L)).  
