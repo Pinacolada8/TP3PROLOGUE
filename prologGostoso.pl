@@ -19,3 +19,6 @@ ultimo([_|T],U) :- ultimo(T,U).
 adjacente(A,B,[B,A|_]).
 adjacente(A,B,[A,B|_]).
 adjacente(A,B,[_|T]) :- adjacente(A,B,T).
+
+gerar(B,B,[B]).
+gerar(A,B,[A|X]) :- Y is A+1,gerar(Y,B,X).
