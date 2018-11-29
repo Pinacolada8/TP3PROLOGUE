@@ -15,3 +15,6 @@ inserirFim(A, [X|B], [X|C]) :- inserirFim(A, B, C).
 
 adjacente(A,B,[C,D|[]]) :- A == C, B == D; A == D, B == C.
 adjacente(A,B,[C,D|E]) :- A == C, B == D; A == D, B==C; adjacente(A,B,E). 
+
+gerar(A,A,[A]).
+gerar(A,B,[A|L]) :- C is A+1, gerar(C,B,L).
